@@ -1,0 +1,78 @@
+//需要兩個溝通時 建一個Talk method ( public string Talk(Walkk w) ) 裡面是Walkk w 存入關於 Walkk w = new Walkk();的值
+  然後 MessageBox.Show(w.Talk(w1)); 確定是 Walkk w1 = new Walkk() 的值
+
+
+----Form1.cs----
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+          
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Walkk w = new Walkk();
+            w.walkstep = 500;
+            w.times = 5;
+            w.name = "大帥哥";
+
+            Walkk w1 = new Walkk();
+            w1.walkstep = 100;
+            w1.times = 1;
+            w1.name = "正咩";
+
+            MessageBox.Show(w.Talk(w1));
+        }
+    }
+}
+
+
+----Walkk.cs----
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WindowsFormsApp1
+{
+    class Walkk
+    {
+        public int walkstep, times;
+        public string name;
+
+        public string Step()
+        {
+            return "I have walked " + walkstep + " step, for about " + times + " minues";
+        }
+        public void Upgrade()
+        {
+            times++;
+        }
+        public string Talk(Walkk w)
+        {
+            return name + "對" + "走" +w.walkstep+ "步，" +"而且只花 "+w.times+" 分鐘的 "+w.name + "SMILE ~~";
+          
+        }
+    }
+}
+
